@@ -1,23 +1,38 @@
 type HeroProps = {
   title: string;
   backgroundImage?: string;
+  tone?: "gradient" | "muted";
 };
 
-export default function Hero({ title, backgroundImage }: HeroProps) {
+const GRADIENT =
+  "linear-gradient(to bottom, #14213d 0%, #4b4258 55%, #d9a66a 100%)";
+
+const TONE_BACKGROUNDS: Record<NonNullable<HeroProps["tone"]>, string> = {
+  gradient: GRADIENT,
+  muted: "#d4d2db",
+};
+
+export default function Hero({
+  title,
+  backgroundImage,
+  tone = "gradient",
+}: HeroProps) {
+  const hasImage = Boolean(backgroundImage);
+
   return (
     <section
-      className={`relative w-full border-b border-black/10 bg-cover bg-center ${
-        backgroundImage
-          ? ""
-          : "bg-gradient-to-r from-amber-200 via-amber-100 to-slate-900"
+      className={`relative flex w-full items-center border-b border-black/10 bg-cover bg-center ${
+        tone === "muted" && !hasImage ? "min-h-[280px]" : "min-h-[420px]"
       }`}
       style={
-        backgroundImage ? { backgroundImage: `url('${backgroundImage}')` } : undefined
+        hasImage
+          ? { backgroundImage: `url('${backgroundImage}')` }
+          : { background: TONE_BACKGROUNDS[tone] }
       }
     >
-      {backgroundImage && <div className="absolute inset-0 bg-black/40" />}
-      <div className="relative mx-auto w-full max-w-6xl px-5 py-16 md:py-20">
-        <h1 className="text-center text-3xl font-semibold uppercase tracking-[0.3em] text-slate-800 md:text-4xl">
+      {hasImage && <div className="absolute inset-0 bg-black/45" />}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-16 md:py-20">
+        <h1 className="text-center text-4xl font-bold uppercase tracking-wide text-white drop-shadow-md md:text-5xl">
           {title}
         </h1>
       </div>

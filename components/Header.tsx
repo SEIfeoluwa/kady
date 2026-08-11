@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -16,6 +17,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="w-full bg-white border-b border-black/10 shadow-sm">
@@ -28,26 +30,37 @@ export default function Header() {
             height={36}
             priority
           />
-          <span className="text-base font-semibold tracking-wide text-slate-900">
-            Kady Group, Inc.
+          <span className="flex flex-col leading-tight">
+            <span className="text-base font-semibold tracking-wide text-navy">
+              Kady Group Inc.
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
+              Builders | Developers
+            </span>
           </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 transition-colors hover:text-amber-700"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname?.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:text-gold-dark ${
+                  isActive ? "text-gold-dark" : "text-navy"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md border border-slate-200 p-2 text-slate-700 transition hover:text-amber-700 md:hidden"
+          className="inline-flex items-center justify-center rounded-md border border-slate-200 p-2 text-navy transition hover:text-gold-dark md:hidden"
           aria-label="Toggle navigation"
           aria-expanded={isOpen}
           onClick={() => setIsOpen((open) => !open)}
@@ -71,7 +84,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[12px] font-semibold uppercase tracking-[0.2em] text-slate-700 transition-colors hover:text-amber-700"
+              className="text-[12px] font-semibold uppercase tracking-[0.2em] text-navy transition-colors hover:text-gold-dark"
               onClick={() => setIsOpen(false)}
             >
               {link.label}

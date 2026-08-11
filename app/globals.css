@@ -12,11 +12,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-navy: #14213d;
+  --color-navy-dark: #0a1226;
+  --color-gold: #d9a66a;
+  --color-gold-dark: #b8834a;
 }
 
 body {
