@@ -24,7 +24,7 @@ export default function Header() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/logo.svg"
+            src="/images/KadyGroup-Development-Construction-Custom-Homes.png"
             alt="Kady Group, Inc."
             width={36}
             height={36}

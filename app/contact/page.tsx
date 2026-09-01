@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -6,7 +7,10 @@ export default function ContactPage() {
   return (
     <main>
       <Header />
-      <Hero title="Contact Kady Group" backgroundImage="/images/hero.jpg" />
+      <Hero
+        title="Contact Kady Group"
+        backgroundImage="/images/30-web-or-mls-DSC00645.jpg"
+      />
 
       <section className="mx-auto w-full max-w-3xl px-5 py-16 text-center">
         <p className="text-base font-bold text-slate-900">
@@ -72,53 +76,7 @@ export default function ContactPage() {
           <span className="h-px w-16 bg-slate-300" />
         </div>
 
-        <form className="mt-10 flex flex-col gap-6">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div>
-              <label htmlFor="name" className="block text-sm text-slate-600">
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-navy focus:outline-none"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm text-slate-600">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-navy focus:outline-none"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="message" className="block text-sm text-slate-600">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-navy focus:outline-none"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="inline-flex w-fit items-center justify-center rounded-md bg-gold px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-dark"
-          >
-            Send
-          </button>
-        </form>
+        <ContactForm />
       </section>
 
       <Footer />

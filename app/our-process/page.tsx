@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 const stages = [
   { label: "Stage 1", description: "Meet with client to discuss their needs" },
@@ -19,7 +19,10 @@ export default function OurProcessPage() {
   return (
     <main>
       <Header />
-      <Hero title="Our Process" />
+      <Hero
+        title="Our Process"
+        backgroundImage="/images/001_2122B_3RD_STREET_215754_292509.jpg"
+      />
 
       <section className="mx-auto w-full max-w-6xl px-5 py-16">
         <h2 className="text-center text-2xl font-bold uppercase text-navy md:text-3xl">
@@ -52,8 +55,8 @@ export default function OurProcessPage() {
           </div>
 
           <div className="rounded-md border-8 border-white bg-white p-1 shadow-lg">
-            <Image
-              src="/images/hero.jpg"
+            <ImagePlaceholder
+              src="/images/kady-group-our-process.jpeg"
               alt="Kady Group process"
               width={640}
               height={480}

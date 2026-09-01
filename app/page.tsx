@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ParallaxSection from "@/components/ParallaxSection";
 
 function SectionHeading({
   title,
@@ -34,21 +36,43 @@ const companies = [
   { label: "Kady Custom Homes" },
 ];
 
+const projectGridImages: (string | null)[] = [
+  "/images/JesusHouse-Exterior.jpg",
+  "/images/001-Living.jpg",
+  "/images/150511162211275-1.jpg",
+  "/images/150511162211284-1.jpg",
+  "/images/074_2715_TENNYSON_ST_NW_208044_288757-1.jpg",
+  "/images/033_2715_TENNYSON_ST_NW_208044_288757-1.jpg",
+  "/images/030_2715_TENNYSON_ST_NW_208044_288757.jpg",
+  "/images/001_2715_TENNYSON_ST_NW_208044_288757.jpg",
+  "/images/034_2004_Evarts_St_NE_162905_171080.jpg",
+  "/images/005_434_3RD_ST_NE_Unit_2_294212_533270.jpg",
+  "/images/010_434_3RD_ST_NE_Unit_2_294212_533270.jpg",
+  "/images/001_2004_Evarts_St_NE_162905_171080.jpg",
+  "/images/002_2122B_3RD_STREET_215754_292509.jpg",
+  "/images/024_2004_Evarts_St_NE_162905_171080.jpg",
+  "/images/029_2900_12TH_STREET_UNIT_301_329719_618357.jpg",
+  "/images/069_2715_TENNYSON_ST_NW_208044_288757-1.jpg",
+];
+
 const services = [
   {
     label: "Development",
     description:
       "Our award-winning team of architects tackle each project with passion and creativity.",
+    image: "/images/JesusHouse-Lobby-01_221104.jpg",
   },
   {
     label: "Construction",
     description:
       "Our contractors and construction team deliver results with precision and accuracy.",
+    image: "/images/008_2715_TENNYSON_ST_NW_208044_288757.jpg",
   },
   {
     label: "Custom Homes",
     description:
       "Trust our project managers to work with you 1-on-1, each step of the way.",
+    image: "/images/001_2715_TENNYSON_ST_NW_208044_288757.jpg",
   },
 ];
 
@@ -60,10 +84,13 @@ export default function Home() {
       {/* Hero */}
       <section
         className="relative flex w-full items-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+        style={{
+          backgroundImage:
+            "url('/images/kady-group-maryland-real-estate.jpeg')",
+        }}
       >
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-6xl items-center px-5 py-20">
+        <div className="relative z-10 mx-auto flex min-h-[80vh] w-full max-w-6xl items-center px-5 py-20">
           <div className="max-w-xl text-left text-white">
             <h1 className="text-3xl font-bold uppercase tracking-wide md:text-4xl">
               A Team of Professionals
@@ -98,8 +125,8 @@ export default function Home() {
           />
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="overflow-hidden border-2 border-navy">
-              <Image
-                src="/images/hero.jpg"
+              <ImagePlaceholder
+                src="/images/Es9-PyLw.jpeg"
                 alt="Kady Group interior"
                 width={640}
                 height={420}
@@ -113,7 +140,7 @@ export default function Home() {
                   className="flex items-center gap-4 border border-slate-200 border-b-4 border-b-gold bg-white px-5 py-5 shadow-sm"
                 >
                   <Image
-                    src="/logo.svg"
+                    src="/images/KadyGroup-Development-Construction-Custom-Homes.png"
                     alt=""
                     width={32}
                     height={32}
@@ -131,7 +158,7 @@ export default function Home() {
 
       {/* Founded banner */}
       <section className="w-full bg-navy">
-        <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-5 py-16 text-center">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-5 py-16 text-center">
           <p className="text-lg font-semibold leading-relaxed text-gold md:text-xl">
             Kady Group, Inc. was founded in 2001. The company is located in
             Lanham Seabrook and incorporated in Maryland. Kady Group, Inc.
@@ -156,14 +183,14 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {services.map((service) => (
               <div key={service.label} className="flex flex-col">
-                <Image
-                  src="/images/hero.jpg"
+                <ImagePlaceholder
+                  src={service.image}
                   alt={service.label}
                   width={480}
                   height={320}
                   className="aspect-[4/3] w-full object-cover"
                 />
-                <div className="-mt-6 mx-4 border border-slate-200 border-b-4 border-b-gold bg-white p-5 shadow-md">
+                <div className="relative z-10 -mt-6 mx-4 border border-slate-200 border-b-4 border-b-gold bg-white p-5 shadow-md">
                   <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-navy">
                     {service.label}
                   </h3>
@@ -178,12 +205,11 @@ export default function Home() {
       </section>
 
       {/* Setting the style */}
-      <section
-        className="relative flex w-full items-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+      <ParallaxSection
+        image="/images/kay-group-custom-homes-2023.jpg"
+        className="flex items-center"
       >
-        <div className="absolute inset-0 bg-black/65" />
-        <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-5 py-24 text-center text-white">
+        <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-5 py-24 text-center text-white">
           <h2 className="text-3xl font-bold md:text-4xl">
             Setting the Style Around Town.
           </h2>
@@ -202,7 +228,7 @@ export default function Home() {
             About Kady Group
           </Link>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Projects */}
       <section className="bg-slate-100 py-14 md:py-16">
@@ -212,10 +238,10 @@ export default function Home() {
             subtitle="We're lucky to have worked with such great partners, both commercial and residential."
           />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {Array.from({ length: 16 }).map((_, index) => (
+            {projectGridImages.map((src, index) => (
               <div key={index} className="aspect-square overflow-hidden">
-                <Image
-                  src="/images/hero.jpg"
+                <ImagePlaceholder
+                  src={src}
                   alt="Kady Group project"
                   width={300}
                   height={300}

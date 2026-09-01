@@ -13,7 +13,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="w-full bg-navy-dark">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-5 py-10 text-center">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-5 py-16 text-center">
         <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white">
           Kady Group, Inc.
         </h3>

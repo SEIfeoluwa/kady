@@ -1,14 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 export default function ServicesPage() {
   return (
     <main>
       <Header />
-      <Hero title="Kady Group Services" backgroundImage="/images/hero.jpg" />
+      <Hero
+        title="Kady Group Services"
+        backgroundImage="/images/026_2900_12TH_STREET_UNIT_301_329719_618357.jpg"
+      />
 
       <section className="mx-auto w-full max-w-5xl px-5 py-16">
         <h2 className="text-center text-2xl font-bold uppercase leading-snug text-navy md:text-3xl">
@@ -46,8 +49,8 @@ export default function ServicesPage() {
           </div>
 
           <div className="rounded-md border-8 border-white bg-white p-1 shadow-lg">
-            <Image
-              src="/images/hero.jpg"
+            <ImagePlaceholder
+              src="/images/033_2715_TENNYSON_ST_NW_208044_288757-1.jpg"
               alt="Kady Group interior"
               width={640}
               height={480}

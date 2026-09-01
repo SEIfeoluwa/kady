@@ -1,10 +1,11 @@
 type HeroProps = {
   title: string;
   backgroundImage?: string;
+  backgroundPosition?: string;
   tone?: "gradient" | "muted";
 };
 
-const GRADIENT =
+export const GRADIENT =
   "linear-gradient(to bottom, #14213d 0%, #4b4258 55%, #d9a66a 100%)";
 
 const TONE_BACKGROUNDS: Record<NonNullable<HeroProps["tone"]>, string> = {
@@ -15,18 +16,19 @@ const TONE_BACKGROUNDS: Record<NonNullable<HeroProps["tone"]>, string> = {
 export default function Hero({
   title,
   backgroundImage,
+  backgroundPosition = "center",
   tone = "gradient",
 }: HeroProps) {
   const hasImage = Boolean(backgroundImage);
 
   return (
     <section
-      className={`relative flex w-full items-center border-b border-black/10 bg-cover bg-center ${
+      className={`relative flex w-full items-center border-b border-black/10 bg-cover ${
         tone === "muted" && !hasImage ? "min-h-[280px]" : "min-h-[420px]"
       }`}
       style={
         hasImage
-          ? { backgroundImage: `url('${backgroundImage}')` }
+          ? { backgroundImage: `url('${backgroundImage}')`, backgroundPosition }
           : { background: TONE_BACKGROUNDS[tone] }
       }
     >

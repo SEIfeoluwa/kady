@@ -8,19 +8,22 @@ export default function AboutPage() {
   return (
     <main>
       <Header />
-      <Hero title="About Kady Group" backgroundImage="/images/hero.jpg" />
+      <Hero
+        title="About Kady Group"
+        backgroundImage="/images/JesusHouse-Exterior.jpg"
+      />
 
-      <section className="mx-auto w-full max-w-3xl px-5 py-16 text-center">
+      <section className="mx-auto w-full max-w-4xl px-5 py-16 text-center">
         <h2 className="text-2xl font-bold uppercase tracking-[0.15em] text-navy">
           Mission Statement
         </h2>
-        <p className="mt-4 text-2xl font-bold text-gold md:text-3xl">
+        <p className="mt-4 text-2xl font-bold text-gold md:whitespace-nowrap md:text-3xl">
           Bringing your construction and development dreams to life
         </p>
 
         <div className="mx-auto mt-10 flex flex-col items-center gap-2">
           <Image
-            src="/logo.svg"
+            src="/images/KadyGroup-Development-Construction-Custom-Homes.png"
             alt="Kady Group Inc."
             width={80}
             height={80}

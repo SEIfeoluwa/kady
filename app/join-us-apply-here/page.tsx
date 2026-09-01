@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import JobApplicationForm from "@/components/JobApplicationForm";
 
 const positions = [
   "Estimator",
@@ -13,7 +14,10 @@ export default function JoinUsApplyHerePage() {
   return (
     <main>
       <Header />
-      <Hero title="Join the Kady Group" />
+      <Hero
+        title="Join the Kady Group"
+        backgroundImage="/images/003_2900_12TH_STREET_UNIT_301_329719_618357.jpg"
+      />
 
       <section className="mx-auto w-full max-w-3xl px-5 py-16 text-center">
         <h2 className="text-3xl font-bold text-gold">Join Us – Apply Here</h2>
@@ -34,7 +38,7 @@ export default function JoinUsApplyHerePage() {
         <h3 className="mt-10 text-xl font-bold text-gold">
           Positions we are hiring for:
         </h3>
-        <ul className="mt-4 flex flex-col gap-2">
+        <ul className="mx-auto mt-4 grid max-w-xl grid-cols-2 gap-x-6 gap-y-2">
           {positions.map((position) => (
             <li key={position} className="text-lg font-bold text-navy">
               {position}
@@ -42,80 +46,7 @@ export default function JoinUsApplyHerePage() {
           ))}
         </ul>
 
-        <form className="mt-14 flex flex-col gap-6 text-left">
-          <h3 className="text-xl font-bold text-gold">Apply Here</h3>
-
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm text-slate-600"
-            >
-              Your Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-navy focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm text-slate-600"
-            >
-              Your Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-navy focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="resume"
-              className="block text-sm text-slate-600"
-            >
-              Upload Resume
-            </label>
-            <input
-              id="resume"
-              name="resume"
-              type="file"
-              className="mt-2 text-sm text-slate-600"
-            />
-          </div>
-
-          <div>
-            <span className="block text-sm text-slate-600">
-              Position Applying For:
-            </span>
-            <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2">
-              {[...positions, "Other"].map((position) => (
-                <label
-                  key={position}
-                  className="flex items-center gap-2 text-sm text-slate-700"
-                >
-                  <input type="radio" name="position" value={position} />
-                  {position}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="inline-flex w-fit items-center justify-center rounded-md bg-gold px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-dark"
-          >
-            Send
-          </button>
-        </form>
+        <JobApplicationForm positions={positions} />
       </section>
 
       <Footer />
