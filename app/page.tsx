@@ -82,13 +82,15 @@ export default function Home() {
       <Header />
 
       {/* Hero */}
-      <section
-        className="relative flex w-full items-center bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/images/kady-group-maryland-real-estate.jpeg')",
-        }}
-      >
+      <section className="relative flex w-full items-center overflow-hidden">
+        <Image
+          src="/images/kady-group-maryland-real-estate.jpeg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 mx-auto flex min-h-[80vh] w-full max-w-6xl items-center px-5 py-20">
           <div className="max-w-xl text-left text-white">

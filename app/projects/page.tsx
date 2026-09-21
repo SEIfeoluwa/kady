@@ -64,7 +64,7 @@ export default function ProjectsPage() {
         <div className="mt-16 flex flex-col items-center">
           <Link href="/projects/coming-soon" className="w-full max-w-md">
             <ImagePlaceholder
-              src="/images/Kady-Group-Solitude-Court-2.png"
+              src="/images/Kady-Group-Solitude-Court-2.jpg"
               alt="Coming Soon"
               width={480}
               height={320}

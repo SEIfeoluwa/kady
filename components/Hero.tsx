@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type HeroProps = {
   title: string;
   backgroundImage?: string;
@@ -23,16 +25,24 @@ export default function Hero({
 
   return (
     <section
-      className={`relative flex w-full items-center border-b border-black/10 bg-cover ${
+      className={`relative flex w-full items-center overflow-hidden border-b border-black/10 ${
         tone === "muted" && !hasImage ? "min-h-[280px]" : "min-h-[420px]"
       }`}
-      style={
-        hasImage
-          ? { backgroundImage: `url('${backgroundImage}')`, backgroundPosition }
-          : { background: TONE_BACKGROUNDS[tone] }
-      }
+      style={hasImage ? undefined : { background: TONE_BACKGROUNDS[tone] }}
     >
-      {hasImage && <div className="absolute inset-0 bg-black/45" />}
+      {hasImage && (
+        <>
+          <Image
+            src={backgroundImage!}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: backgroundPosition }}
+          />
+          <div className="absolute inset-0 bg-black/45" />
+        </>
+      )}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-16 md:py-20">
         <h1 className="text-center text-4xl font-bold uppercase tracking-wide text-white drop-shadow-md md:text-5xl">
           {title}

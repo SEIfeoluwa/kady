@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const startedAtRef = useRef(Date.now());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,6 +31,15 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6">
+      <div
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
+      >
+        <label htmlFor="hp_check">Leave this field blank</label>
+        <input id="hp_check" name="hp_check" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+      <input type="hidden" name="ts" value={startedAtRef.current} readOnly />
+
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="block text-sm text-slate-600">

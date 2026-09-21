@@ -1,6 +1,7 @@
 export type Project = {
   slug: string;
   name: string;
+  subtitle?: string;
   // null = no photo set yet; renders a gradient placeholder instead.
   heroImage: string | null;
   gallery: (string | null)[];
@@ -30,24 +31,26 @@ export const projectCategories: ProjectCategory[] = [
     projects: [
       {
         slug: "434-3rd",
-        name: "434 3rd",
+        name: "434 3rd Street NE",
         heroImage: "/images/005_434_3RD_ST_NE_Unit_2_294212_533270.jpg",
         gallery: ["/images/010_434_3RD_ST_NE_Unit_2_294212_533270.jpg"],
       },
       {
         slug: "2900-12th-street",
-        name: "2900 12th Street",
+        name: "2900 12th Street NE",
         heroImage: "/images/026_2900_12TH_STREET_UNIT_301_329719_618357.jpg",
         gallery: [
           "/images/029_2900_12TH_STREET_UNIT_301_329719_618357.jpg",
           "/images/038_2900_12TH_ST_NE_101_311020_579396.jpg",
         ],
       },
-      placeholderProject("2112-2126 3rd St", "2112-2126-3rd-st"),
-      placeholderProject("Kensington Place Condo", "kensington-place-condo"),
-      placeholderProject("3800 block of 1st Street SE", "3800-block-of-1st-street-se"),
-      placeholderProject("1410 Newton Street", "1410-newton-street"),
-      placeholderProject("818 Kennedy St NW", "818-kennedy-st-nw"),
+      {
+        ...placeholderProject("Kensington Place Condo", "kensington-place-condo"),
+        subtitle: "2112-2126 3rd Street NE",
+      },
+      placeholderProject("3800 1st Street SE", "3800-block-of-1st-street-se"),
+      placeholderProject("1410 Newton Street NW", "1410-newton-street"),
+      placeholderProject("818 Kennedy Street NW", "818-kennedy-st-nw"),
       placeholderProject("1914 8th Street NW", "1914-8th-street-nw"),
     ],
   },

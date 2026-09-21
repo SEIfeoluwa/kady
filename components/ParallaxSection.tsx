@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 type ParallaxSectionProps = {
   image: string;
@@ -62,9 +63,11 @@ export default function ParallaxSection({
     >
       <div
         ref={imageRef}
-        className="absolute left-0 right-0 bg-cover bg-center will-change-transform"
-        style={{ backgroundImage: `url('${image}')`, top: "-40%", bottom: "-40%" }}
-      />
+        className="absolute left-0 right-0 will-change-transform"
+        style={{ top: "-40%", bottom: "-40%" }}
+      >
+        <Image src={image} alt="" fill sizes="100vw" className="object-cover" />
+      </div>
       <div className={`absolute inset-0 ${overlayClassName}`} />
       <div className="relative z-10 w-full">{children}</div>
     </section>

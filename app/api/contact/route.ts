@@ -1,8 +1,27 @@
 import { NextResponse } from "next/server";
 import { CONTACT_EMAIL, FROM_EMAIL, getResendClient } from "@/lib/resend";
+import {
+  getClientIp,
+  isHoneypotFilled,
+  isRateLimited,
+  isSubmittedTooFast,
+} from "@/lib/spam";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
+
+  if (isHoneypotFilled(formData) || isSubmittedTooFast(formData)) {
+    // Pretend it worked so bots don't adjust their behavior and retry.
+    return NextResponse.json({ success: true });
+  }
+
+  if (isRateLimited(`contact:${getClientIp(request)}`, { max: 5, windowMs: 60 * 60 * 1000 })) {
+    return NextResponse.json(
+      { error: "Too many submissions. Please try again later." },
+      { status: 429 },
+    );
+  }
+
   const name = formData.get("name");
   const email = formData.get("email");
   const message = formData.get("message");
